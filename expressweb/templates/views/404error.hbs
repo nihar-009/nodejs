@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{{>headerlinks}}
+</head>
+<body>
+    {{>navbar}}
+    <!-- main header -->
+    <div class="container-fluid main_header">
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto">
+                <div class="row">
+                    <!-- left side div -->
+                    <div class="col-md-12 col-12 main_header_left" style="align-items: center;">
+                        <figure>
+                            <img src="image/erro.png" alt="nihar" class="img-fluid" width="230px">
+                        </figure>
+                        <p>Welcome but at Wrong page</p>
+                        <h1>{{errormsg}}</h1>
+                        <a href="/" ><button>Back</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer part -->
+  {{>footer}}
+</body>
+</html>

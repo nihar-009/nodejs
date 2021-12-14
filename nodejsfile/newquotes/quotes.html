@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes</title>
+</head>
+<body>
+    <div style="width: 100%; display: flex; justify-content: center;">
+        <div style="height: 200px; width: 400px; border: 1px solid black; border-radius: 5px; margin-top: 20%; background-color: wheat; ">
+            <div style="text-align: center; position: relative;
+            top: 16%;">
+            <p id="quote"></p>
+            </div>
+            <div style="position: relative;
+            left: 66%;
+            top: 30%;">
+            <p id="author"></p>
+            </div>    
+            <div style="align-items: center;
+            display: flex;
+            justify-content: center;
+            top: 81px;
+            position: relative;">
+            <button id="newquotes" onclick="getnewquotes()" style="width: 100%;
+            background-color: #489048;
+            border-radius: 5px;
+            height: 35px;
+            color: white;">New Quotes</button>
+            </div>  
+            <div> 
+                <button onclick="tweetme()">Tweet</button>
+            </div>
+        </div>
+    </div>
+        
+  
+</body>
+<script>
+    let num = Math.floor(Math.random() *10);
+    const getnewquotes = () =>{
+         num += 1;
+         getquotes(num)
+    }
+    const tweetme = () => {
+        var text = document.getElementById("quote").textContent;
+        let tweetpost = `https://twitter.com/intent/tweet?text=${text}`;
+        window.open(tweetpost);
+    }
+    const getquotes = async (num)=>{
+        const api = "https://type.fit/api/quotes";
+        try {
+            let data = await fetch(api);
+            let realdata =  await data.json();
+            document.getElementById("quote").innerHTML = realdata[num].text;
+            document.getElementById("author").innerHTML = realdata[num].author ? realdata[num].author: "No author" ;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    getquotes(num);
+</script>
+</html>
